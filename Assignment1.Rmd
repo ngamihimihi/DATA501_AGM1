@@ -380,4 +380,7 @@ git merge FFB --no-commit
 
 resolve conflict
 
-goit 
+git add Assignment1.Rmd  
+git add DATA501_Assignment1.Rmd  
+git commit -m"Q1H-EDITS"  
+git push  
