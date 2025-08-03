@@ -2,12 +2,17 @@
 title: "Assignment1"
 author: "Nga Nguyen,300451544"
 date: "2025-08-02"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 Question 1.a:  
-git init
-cd /Users/nghec/DATA501/Assignment1/DATA501_AGM1  
+git init  
+
+cd /Users/nghec/DATA501/Assignment1/DATA501_AGM1   
+
 git clone https://github.com/ngamihimihi/DATA501_AGM1.git  
+
 cd /Users/nghec/DATA501/Assignment1/DATA501_AGM1  
 
 ```{r,echo=FALSE}
@@ -144,7 +149,7 @@ print(paste("Variance: ",  var(sample3)))
 
 ```
 
-QUestion 1.c:  
+Question 1.c:  
 
 git branch FFA
 git commit -m"Q1C-EDITS"  
@@ -155,7 +160,69 @@ git branch FFB
 git commit-m"Q1C-EDITS"  
 git push -u origin FFB  
 git push  
+
+```{r,echo=FALSE}
+library(Rcpp)
+
+# Last 3 digit of your student id 
+student_number <- 544
+
+cppFunction('double my_function_A(Rcpp::NumericVector x) {
+  int n = x.size();
+  if (n < 2) {
+    Rcpp::stop("Need at least two elements to compute sample variance");
+  }
   
+  double mean = Rcpp::mean(x);
+  double sum_sq_diff = 0.0;
+  
+  for (int i = 0; i < n; ++i) {
+    sum_sq_diff += (x[i] - mean) * (x[i] - mean) * (x[i] - mean);
+  }
+  
+  return sum_sq_diff / (n);
+}')
+
+
+cppFunction('double my_function_B(Rcpp::NumericVector x) {
+  int n = x.size();
+  if (n < 2) {
+    Rcpp::stop("Need at least two elements to compute the mean");
+  }
+  double sum_total = 0;
+  
+  for (int i = 0; i < n; ++i) {
+    sum_total += x[i] + 1;
+  }
+  
+  return sum_total / (n);
+}')
+
+
+# Read from Data-set
+sample2 <- read.csv(paste("Data501_Dataset_Assignment1.csv")) + student_number
+
+
+# Convert to the correct format
+sample3 <- as.numeric(sample2[[1]])
+
+
+# Test my_function A
+valA <- my_function_A(sample3)
+
+
+# Test my_function B
+valB <- my_function_B(sample3)
+
+
+# Create Output
+print(paste("Function A Results: ",  my_function_A(sample3)))
+print(paste("Function B Results: ",  my_function_B(sample3)))
+
+
+print(paste("Mean: ",  mean(sample3)))
+print(paste("Variance: ",  var(sample3)))
+```
 Question 1.d:  
 
 git switch FFA  
@@ -164,7 +231,7 @@ git commit -m"Q1D-EIDTS"
 git 
 
 
-```{r pressure, echo=FALSE}
+```{r, echo=FALSE}
 library(Rcpp)
 
 # Last 3 digit of your student id 
@@ -298,7 +365,7 @@ print(paste("Mean: ",  var(sample3)))
 ```
 
 Question 1.f:
-```{r pressure, echo=FALSE, fig.cap="A caption", out.width = '50%'}
+```{r pressure, echo=FALSE, fig.cap="REPO structure", out.width = '50%'}
 knitr::include_graphics("repo_structure.png")
 ```
 
@@ -448,4 +515,16 @@ print(paste("Function B Results: ",  my_function_B(sample3)))
 print(paste("Mean: ",  mean(sample3)))
 print(paste("Mean: ",  var(sample3)))
 ```
+
+Question 1.i:  
+git remote remove origin  
+git remote add https://github.com/ngamihimihi/DATA501_AGM1
+git remote -v  
+git push -u origin main  
+git push -u origin FFB  
+git push -u origin FFA  
+git add Assignment1.pdf  
+git commit -m"Add pdf file"  
+git push  
+
 
