@@ -9,14 +9,13 @@ cppFunction('double my_function_A(Rcpp::NumericVector x) {
     Rcpp::stop("Need at least two elements to compute sample variance");
   }
   
-  double mean = Rcpp::mean(x);
-  double sum_sq_diff = 0.0;
+  double sum_total = 0;
   
   for (int i = 0; i < n; ++i) {
-    sum_sq_diff += (x[i] - mean) * (x[i] - mean) * (x[i] - mean);
+    sum_total += x[i] + 1;
   }
   
-  return sum_sq_diff / (n);
+  return sum_total / (n);
 }')
 
 
@@ -56,5 +55,5 @@ print(paste("Function A Results: ",  my_function_A(sample3)))
 print(paste("Function B Results: ",  my_function_B(sample3)))
 
 
-print(paste("Mean: ",  mean(sample3)))
+print(paste("Variance: ",  mean(sample3)))
 print(paste("Variance: ",  var(sample3)))
