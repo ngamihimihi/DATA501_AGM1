@@ -158,11 +158,226 @@ git push
   
 Question 1.d:  
 
-
+git switch FFA  
+git add .  
+git commit -m"Q1D-EIDTS"  
+git 
 
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+library(Rcpp)
+
+# Last 3 digit of your student id 
+student_number <- 544
+
+cppFunction('double my_function_A(Rcpp::NumericVector x) {
+  int n = x.size();
+  if (n < 2) {
+    Rcpp::stop("Need at least two elements to compute sample variance");
+  }
+  
+  double sum_total = 0;
+  
+  for (int i = 0; i < n; ++i) {
+    sum_total += x[i] + 1;
+  }
+  
+  return sum_total / (n);
+}')
+
+
+cppFunction('double my_function_B(Rcpp::NumericVector x) {
+  int n = x.size();
+  if (n < 2) {
+    Rcpp::stop("Need at least two elements to compute the mean");
+  }
+  double sum_total = 0;
+  
+  for (int i = 0; i < n; ++i) {
+    sum_total += x[i] + 1;
+  }
+  
+  return sum_total / (n);
+}')
+
+
+# Read from Data-set
+sample2 <- read.csv(paste("Data501_Dataset_Assignment1.csv")) + student_number
+
+
+# Convert to the correct format
+sample3 <- as.numeric(sample2[[1]])
+
+
+# Test my_function A
+valA <- my_function_A(sample3)
+
+
+# Test my_function B
+valB <- my_function_B(sample3)
+
+
+# Create Output
+print(paste("Function A Results: ",  my_function_A(sample3)))
+print(paste("Function B Results: ",  my_function_B(sample3)))
+
+
+print(paste("Variance: ",  mean(sample3)))
+print(paste("Variance: ",  var(sample3)))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Question 1.e:  
+git switch FFB  
+git add .
+git commit -m"Q1E-EDITS"
+git push
+
+```{r, echo=FALSE}
+
+library(Rcpp)
+
+# Last 3 digit of your student id 
+student_number <- 544
+
+cppFunction('double my_function_A(Rcpp::NumericVector x) {
+  int n = x.size();
+  if (n < 2) {
+    Rcpp::stop("Need at least two elements to compute sample variance");
+  }
+  
+  double mean = Rcpp::mean(x);
+  double sum_sq_diff = 0.0;
+  
+  for (int i = 0; i < n; ++i) {
+    sum_sq_diff += (x[i] - mean) * (x[i] - mean) * (x[i] - mean);
+  }
+  
+  return sum_sq_diff / (n);
+}')
+
+
+cppFunction('double my_function_B(Rcpp::NumericVector x) {
+  int n = x.size();
+  if (n < 2) {
+    Rcpp::stop("Need at least two elements to compute the mean");
+  }
+ double mean = Rcpp::mean(x);
+  double sum_sq_diff = 0.0;
+  
+  for (int i = 0; i < n; ++i) {
+    sum_sq_diff += (x[i] - mean) * (x[i] - mean) * (x[i] - mean);
+  }
+  
+  return sum_sq_diff / (n);
+}')
+
+
+# Read from Data-set
+sample2 <- read.csv(paste("Data501_Dataset_Assignment1.csv")) + student_number
+
+
+# Convert to the correct format
+sample3 <- as.numeric(sample2[[1]])
+
+
+# Test my_function A
+valA <- my_function_A(sample3)
+
+
+# Test my_function B
+valB <- my_function_B(sample3)
+
+
+# Create Output
+print(paste("Function A Results: ",  my_function_A(sample3)))
+print(paste("Function B Results: ",  my_function_B(sample3)))
+
+
+print(paste("Mean: ",  mean(sample3)))
+print(paste("Mean: ",  var(sample3)))
+```
+
+Question 1.f:
+```{r pressure, echo=FALSE, fig.cap="A caption", out.width = '50%'}
+knitr::include_graphics("repo_structure.png")
+```
+
+Question 1.g:  
+git add .  
+git commit -m"Save markdown progress"  
+git push  
+git switch main
+git rebase FFA  
+git commit -m"Q1G-EDITS"  
+git push  
+
+```{r,echo=FALSE}
+library(Rcpp)
+
+# Last 3 digit of your student id 
+student_number <- 544
+
+cppFunction('double my_function_A(Rcpp::NumericVector x) {
+  int n = x.size();
+  if (n < 2) {
+    Rcpp::stop("Need at least two elements to compute sample variance");
+  }
+  
+  double sum_total = 0;
+  
+  for (int i = 0; i < n; ++i) {
+    sum_total += x[i] + 1;
+  }
+  
+  return sum_total / (n);
+}')
+
+
+cppFunction('double my_function_B(Rcpp::NumericVector x) {
+  int n = x.size();
+  if (n < 2) {
+    Rcpp::stop("Need at least two elements to compute the mean");
+  }
+  double sum_total = 0;
+  
+  for (int i = 0; i < n; ++i) {
+    sum_total += x[i] + 1;
+  }
+  
+  return sum_total / (n);
+}')
+
+
+# Read from Data-set
+sample2 <- read.csv(paste("Data501_Dataset_Assignment1.csv")) + student_number
+
+
+# Convert to the correct format
+sample3 <- as.numeric(sample2[[1]])
+
+
+# Test my_function A
+valA <- my_function_A(sample3)
+
+
+# Test my_function B
+valB <- my_function_B(sample3)
+
+
+# Create Output
+print(paste("Function A Results: ",  my_function_A(sample3)))
+print(paste("Function B Results: ",  my_function_B(sample3)))
+
+
+print(paste("Variance: ",  mean(sample3)))
+print(paste("Variance: ",  var(sample3)))
+
+```
+
+Question 1.h.: 
+git switch main
+git merge FFB --no-commit
+
+resolve conflict
+
+goit 
