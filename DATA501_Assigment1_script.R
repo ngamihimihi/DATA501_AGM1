@@ -25,13 +25,14 @@ cppFunction('double my_function_B(Rcpp::NumericVector x) {
   if (n < 2) {
     Rcpp::stop("Need at least two elements to compute the mean");
   }
-  double sum_total = 0;
+ double mean = Rcpp::mean(x);
+  double sum_sq_diff = 0.0;
   
   for (int i = 0; i < n; ++i) {
-    sum_total += x[i] + 1;
+    sum_sq_diff += (x[i] - mean) * (x[i] - mean) * (x[i] - mean);
   }
   
-  return sum_total / (n);
+  return sum_sq_diff / (n);
 }')
 
 
@@ -57,4 +58,4 @@ print(paste("Function B Results: ",  my_function_B(sample3)))
 
 
 print(paste("Mean: ",  mean(sample3)))
-print(paste("Variance: ",  var(sample3)))
+print(paste("Mean: ",  var(sample3)))
