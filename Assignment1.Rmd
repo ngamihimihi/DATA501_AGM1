@@ -6,6 +6,9 @@ output:
   pdf_document: default
   html_document: default
 ---
+Question 1:  
+Github link: https://github.com/ngamihimihi/DATA501_AGM1/  
+
 Question 1.a:  
 git init  
 
@@ -15,7 +18,7 @@ git clone https://github.com/ngamihimihi/DATA501_AGM1.git
 
 cd /Users/nghec/DATA501/Assignment1/DATA501_AGM1  
 
-```{r,echo=FALSE}
+```{r}
 library(Rcpp)
 
 # Last 3 digit of your student id 
@@ -86,7 +89,7 @@ git add .
 git commit -m"Q1B-EDITS"  
 git push  
 
-```{r,echo=FALSE}
+```{r}
 library(Rcpp)
 # Last 3 digit of your student id 
 student_number <- 544
@@ -161,7 +164,7 @@ git commit-m"Q1C-EDITS"
 git push -u origin FFB  
 git push  
 
-```{r,echo=FALSE}
+```{r}
 library(Rcpp)
 
 # Last 3 digit of your student id 
@@ -231,7 +234,7 @@ git commit -m"Q1D-EIDTS"
 git 
 
 
-```{r, echo=FALSE}
+```{r}
 library(Rcpp)
 
 # Last 3 digit of your student id 
@@ -378,7 +381,7 @@ git rebase FFA
 git commit -m"Q1G-EDITS"  
 git push  
 
-```{r,echo=FALSE}
+```{r}
 library(Rcpp)
 
 # Last 3 digit of your student id 
@@ -452,7 +455,7 @@ git add DATA501_Assignment1.Rmd
 git commit -m"Q1H-EDITS"  
 git push  
 
-```{r,echo=FALSE}
+```{r}
 library(Rcpp)
 
 # Last 3 digit of your student id 
@@ -527,4 +530,6 @@ git add Assignment1.pdf
 git commit -m"Add pdf file"  
 git push  
 
-
+Question 2:   
+Github link:  
+https://github.com/ngamihimihi/DATA501_AGM1P2
